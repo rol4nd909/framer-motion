@@ -1,0 +1,10 @@
+{
+  "title": "Viewports",
+  "description": "The min and maximum viewports used to generate fluid type and space scales.",
+  "min": 600,
+  "max": 1200,
+  "sm": 600,
+  "md": 900,
+  "lg": 1200,
+  "xl": 1800
+}

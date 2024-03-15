@@ -1,0 +1,38 @@
+{
+  "name": "astro-cube-tw-boilerplate",
+  "type": "module",
+  "version": "0.0.1",
+  "author": "Roland Franke <css@rolandfranke.nl>",
+  "description": "A simple Astro boilerplate with CUBE CSS and TailwindCSS",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.7",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.5.0",
+    "astro-icon": "^1.1.0",
+    "slugify": "^1.6.6",
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "@csstools/postcss-global-data": "^2.1.1",
+    "postcss": "^8.4.35",
+    "postcss-custom-media": "^10.0.3",
+    "postcss-js": "^4.0.1",
+    "postcss-preset-env": "^9.5.0",
+    "postcss-utopia": "^1.0.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.12",
+    "sharp": "^0.33.2",
+    "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}
