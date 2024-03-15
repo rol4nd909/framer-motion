@@ -1,18 +1,26 @@
 import { min as _min, max as _max } from '../design-tokens/viewports.json';
+import type { Token } from './tokens-to-tailwind';
+
+type Props = {
+  name: string;
+  min: number;
+  max: number;
+  lineHeight?: number;
+}
 
 /**
- * Takes an array of tokens and sends back and array of name
+ * Takes an array of tokens and sends back an array of name
  * and clamp pairs for CSS fluid values.
  *
  * @param {array} tokens array of {name: string, min: number, max: number}
  * @returns {array} {name: string, value: string}
  */
-const clampGenerator = tokens => {
+const clampGenerator = (tokens: Props[]): Token[] => {
   const rootSize = 16;
 
-  return tokens.map(({name, min, max}) => {
+  return tokens.map(({ name, min, max, lineHeight }: Props) => {
     if (min === max) {
-      return `${min / rootSize}rem`;
+      return { name, value: `${min / rootSize}rem`, lineHeight };
     }
 
     // Convert the min and max sizes to rems
@@ -29,9 +37,8 @@ const clampGenerator = tokens => {
 
     return {
       name,
-      value: `clamp(${minSize}rem, ${intersection.toFixed(2)}rem + ${(
-        slope * 100
-      ).toFixed(2)}vw, ${maxSize}rem)`
+      value: `clamp(${minSize}rem, ${intersection.toFixed(2)}rem + ${(slope * 100).toFixed(2)}vw, ${maxSize}rem)`,
+      lineHeight,
     };
   });
 };

@@ -27,5 +27,5 @@ module.exports = {
   useTabs: false,
   jsxBracketSameLine: false,
   trailingComma: "es5",
-  tailwindConfig: './tailwind.config.mjs',
+  tailwindConfig: './tailwind.config.ts',
 }

@@ -8,7 +8,7 @@
     {
       "name": "Step 000",
       "min": 12,
-      "max": 14
+      "max": 12
     },
     {
       "name": "Step 00",
@@ -43,7 +43,8 @@
     {
       "name": "Step 5",
       "min": 44.79,
-      "max": 61.04
+      "max": 61.04,
+      "lineHeight": "1.1"
     }
   ]
 }

@@ -10,5 +10,7 @@
       "@styles/*": ["src/css/*"],
       "@assets/*": ["src/assets/*"],
     }
-  }
+  },
+  "jsx": "react-jsx",
+  "jsxImportSource": "react"
 }
