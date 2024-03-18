@@ -1,0 +1,19 @@
+.constrain {
+  display: grid;
+  grid-template-columns:
+    [fullbleed-start] minmax(var(--site-space, 1rem), 1fr)
+    [main-start] minmax(0, calc((var(--constrain-large) - var(--constrain-medium)) / 2))
+    [medium-start] minmax(0, calc((var(--constrain-medium) - var(--constrain-small)) / 2))
+    [small-start]
+    min(100% - (var(--site-space, 1rem) * 2), var(--constrain-small))
+    [small-end]
+    minmax(0, calc((var(--constrain-medium) - var(--constrain-small)) / 2)) [medium-end]
+    minmax(0, calc((var(--constrain-large) - var(--constrain-medium)) / 2)) [main-end]
+    minmax(var(--site-space, 1rem), 1fr) [fullbleed-end];
+  place-content: start;
+
+  /* Place children in the medium column by default */
+  > * {
+    grid-column: medium;
+  }
+}

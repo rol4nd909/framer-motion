@@ -1,0 +1,27 @@
+---
+
+---
+
+<header class="constrain relative z-20 col-fullbleed bg-dark py-s text-light">
+    <div class="header col-small">HEADER</div>
+</header>
+<nav class="constrain sticky top-0 z-20 col-fullbleed bg-dark py-s text-light">
+    <p class="col-small">Apple TV+</p>
+</nav>
+
+<script>
+    const header = document.querySelector('header')
+    const nav = document.querySelector('nav')
+
+    // Function to calculate and set the combined height
+    const setHeaderHeight = () => {
+        const headerHeight = header!.offsetHeight + nav!.offsetHeight
+        document.documentElement.style.setProperty('--header-height', `${headerHeight / 16}rem`)
+    }
+
+    // Initial calculation and setting of combined height
+    setHeaderHeight()
+
+    // Event listener for window resize
+    window.addEventListener('resize', setHeaderHeight)
+</script>

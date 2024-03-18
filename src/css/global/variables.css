@@ -1,6 +1,9 @@
 :root {
-  --gutter: var(--space-s-l);
+  --constrain-large: 86.25rem;
+  --constrain-medium: 75rem;
+  --constrain-small: 61.25rem;
 
+  --gutter: var(--space-s-l);
   --transition-base: 250ms ease;
   --transition-movement: 200ms linear;
   --transition-fade: 300ms ease;

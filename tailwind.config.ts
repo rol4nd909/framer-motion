@@ -1,37 +1,34 @@
-import { type Config } from 'tailwindcss';
-import plugin from 'tailwindcss/plugin';
-import postcss from 'postcss';
-import postcssJs from 'postcss-js';
-import slugify from 'slugify';
+import { type Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
+import postcss from 'postcss'
+import postcssJs from 'postcss-js'
+import slugify from 'slugify'
 
-import clampGenerator from './src/css-utils/clamp-generator';
-import tokensToTailwind from './src/css-utils/tokens-to-tailwind';
+import clampGenerator from './src/css-utils/clamp-generator'
+import tokensToTailwind from './src/css-utils/tokens-to-tailwind'
 
 // Raw design tokens
-const colorTokens = require('./src/design-tokens/colors.json');
-const fontTokens = require('./src/design-tokens/fonts.json');
-const spacingTokens = require('./src/design-tokens/spacing.json');
-const textSizeTokens = require('./src/design-tokens/text-sizes.json');
-const textLeadingTokens = require('./src/design-tokens/text-leading.json');
-const textWeightTokens = require('./src/design-tokens/text-weights.json');
-const viewportTokens = require('./src/design-tokens/viewports.json');
+const colorTokens = require('./src/design-tokens/colors.json')
+const fontTokens = require('./src/design-tokens/fonts.json')
+const spacingTokens = require('./src/design-tokens/spacing.json')
+const textSizeTokens = require('./src/design-tokens/text-sizes.json')
+const textLeadingTokens = require('./src/design-tokens/text-leading.json')
+const textWeightTokens = require('./src/design-tokens/text-weights.json')
+const viewportTokens = require('./src/design-tokens/viewports.json')
 
 // Process design tokens
-const colors = tokensToTailwind(colorTokens.items);
-const fontFamily = tokensToTailwind(fontTokens.items);
-const fontWeight = tokensToTailwind(textWeightTokens.items);
-const fontSize = tokensToTailwind(clampGenerator(textSizeTokens.items));
-const lineHeight = tokensToTailwind(textLeadingTokens.items);
-const spacing = tokensToTailwind(clampGenerator(spacingTokens.items));
-
+const colors = tokensToTailwind(colorTokens.items)
+const fontFamily = tokensToTailwind(fontTokens.items)
+const fontWeight = tokensToTailwind(textWeightTokens.items)
+const fontSize = tokensToTailwind(clampGenerator(textSizeTokens.items))
+const lineHeight = tokensToTailwind(textLeadingTokens.items)
+const spacing = tokensToTailwind(clampGenerator(spacingTokens.items))
 
 // Custom utility to slugify text
-const nameSlug = (text: string): string => slugify(text, { lower: true });
+const nameSlug = (text: string): string => slugify(text, { lower: true })
 
 const tailwindConfig: Config = {
-  content: [
-    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   safelist: [],
   theme: {
     screens: {
@@ -53,6 +50,18 @@ const tailwindConfig: Config = {
       ...theme('spacing'),
     }),
     padding: ({ theme }) => theme('spacing'),
+    gridColumn: {
+      main: 'main',
+      medium: 'medium',
+      small: 'small',
+      fullbleed: 'fullbleed',
+    },
+    extend: {
+      inset: {
+        0: '0',
+        auto: 'auto',
+      },
+    },
   },
   variantOrder: [
     'first',
@@ -84,9 +93,9 @@ const tailwindConfig: Config = {
   },
   plugins: [
     plugin(function ({ addComponents, config }) {
-      let result = '';
+      let result = ''
 
-      const currentConfig = config();
+      const currentConfig = config()
 
       const groups = [
         { key: 'colors', prefix: 'color' },
@@ -95,50 +104,48 @@ const tailwindConfig: Config = {
         { key: 'lineHeight', prefix: 'leading' },
         { key: 'fontFamily', prefix: 'font' },
         { key: 'fontWeight', prefix: 'font' },
-      ];
+      ]
 
       groups.forEach(({ key, prefix }) => {
-        const group = currentConfig?.theme?.[key];
+        const group = currentConfig?.theme?.[key]
 
         if (!group) {
-          return;
+          return
         }
 
         Object.keys(group).forEach((key) => {
-          result += `--${prefix}-${key}: ${group[key]};`;
-        });
-      });
+          result += `--${prefix}-${key}: ${group[key]};`
+        })
+      })
 
       addComponents({
         ':root': postcssJs.objectify(postcss.parse(result)),
-      });
+      })
     }),
 
     plugin(function ({ addUtilities, config }) {
-      const currentConfig = config();
+      const currentConfig = config()
       const customUtilities = [
         { key: 'spacing', prefix: 'flow-space', property: '--flow-space' },
         { key: 'spacing', prefix: 'region-space', property: '--region-space' },
         { key: 'spacing', prefix: 'gutter', property: '--gutter' },
-      ];
+      ]
 
       customUtilities.forEach(({ key, prefix, property }) => {
-        const group = currentConfig?.theme?.[key];
+        const group = currentConfig?.theme?.[key]
 
         if (!group) {
-          return;
+          return
         }
 
         Object.keys(group).forEach((key) => {
           addUtilities({
-            [`.${prefix}-${key}`]: postcssJs.objectify(
-              postcss.parse(`${property}: ${group[key]}`),
-            ),
-          });
-        });
-      });
+            [`.${prefix}-${key}`]: postcssJs.objectify(postcss.parse(`${property}: ${group[key]}`)),
+          })
+        })
+      })
     }),
   ],
-};
+}
 
-export default tailwindConfig;
+export default tailwindConfig

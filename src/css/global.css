@@ -1,11 +1,13 @@
 @import 'tailwindcss/base';
 
-@import 'global/reset.css';
-@import 'global/fonts.css';
+@import 'global/reset.css' layer(base);
+@import 'global/fonts.css' layer(base);
 
 @import 'tailwindcss/components';
 
-@import 'global/variables.css';
-@import 'global/global-styles.css';
+@import 'global/variables.css' layer(base);
+@import 'global/global-styles.css' layer(components);
+
+@import 'components/constrain.css' layer(components);
 
 @import 'tailwindcss/utilities';

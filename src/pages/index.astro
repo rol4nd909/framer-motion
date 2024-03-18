@@ -1,19 +1,25 @@
 ---
 import Layout from '@layouts/Layout.astro'
+import Header from '@components/Header.astro'
+import Usps from '@/components/section/Usps.astro'
+
+// React components
+import { Hero } from '@/components/section/hero'
 ---
 
 <Layout title="Apple TV rebuild with Framer Motion">
-    <div class="header">HEADER</div>
-    <main>
-        <div class="hero">HERO</div>
-        <div class="usps">
-            USP's <br />
-            <div class="3-cols">3 col layout</div>
-        </div>
-        <div class="carousels">
-            <div class="carousel">Big Carousel</div>
-            <div class="carousel">Small Carousel 2</div>
-            <div class="carousel">Small Carousel 3</div>
+    <Header />
+    <main class="constrain col-fullbleed">
+        <Hero client:visible />
+
+        <Usps />
+
+        <div class="carousel col-fullbleed">Big Carousel</div>
+        <div class="carousel col-fullbleed">Small Carousel 2</div>
+        <div class="carousel col-fullbleed">Small Carousel 3</div>
+
+        <div class="constrain col-fullbleed h-[200vh] bg-light text-dark">
+            <h3>new sections</h3>
         </div>
     </main>
 </Layout>
