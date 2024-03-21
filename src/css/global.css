@@ -9,5 +9,8 @@
 @import 'global/global-styles.css' layer(components);
 
 @import 'components/constrain.css' layer(components);
+@import 'components/grids.css' layer(components);
+
+@import 'utilities/region.css' layer(components);
 
 @import 'tailwindcss/utilities';

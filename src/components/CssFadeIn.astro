@@ -1,0 +1,27 @@
+---
+
+---
+
+<div>
+    <slot />
+</div>
+
+<style>
+    div {
+        animation: scrollFadeIn ease-in-out both;
+        animation-timeline: view();
+        animation-range: entry 50% cover 50%;
+    }
+
+    @keyframes scrollFadeIn {
+        0% {
+            opacity: 0;
+            translate: 0 3rem;
+        }
+
+        100% {
+            opacity: 1;
+            translate: 0 0;
+        }
+    }
+</style>

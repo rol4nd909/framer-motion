@@ -41,13 +41,13 @@
       "name": "4xl",
       "min": 28,
       "max": 64,
-      "lineHeight": "1.1"
+      "lineHeight": 1.1
     },
     {
       "name": "5xl",
       "min": 30,
       "max": 80,
-      "lineHeight": "1.1"
+      "lineHeight": 1.1
     }
   ]
 }

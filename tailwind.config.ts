@@ -2,19 +2,18 @@ import { type Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 import postcss from 'postcss'
 import postcssJs from 'postcss-js'
-import slugify from 'slugify'
 
 import clampGenerator from './src/css-utils/clamp-generator'
 import tokensToTailwind from './src/css-utils/tokens-to-tailwind'
 
 // Raw design tokens
-const colorTokens = require('./src/design-tokens/colors.json')
-const fontTokens = require('./src/design-tokens/fonts.json')
-const spacingTokens = require('./src/design-tokens/spacing.json')
-const textSizeTokens = require('./src/design-tokens/text-sizes.json')
-const textLeadingTokens = require('./src/design-tokens/text-leading.json')
-const textWeightTokens = require('./src/design-tokens/text-weights.json')
-const viewportTokens = require('./src/design-tokens/viewports.json')
+import colorTokens from './src/design-tokens/colors.json'
+import fontTokens from './src/design-tokens/fonts.json'
+import spacingTokens from './src/design-tokens/spacing.json'
+import textSizeTokens from './src/design-tokens/text-sizes.json'
+import textLeadingTokens from './src/design-tokens/text-leading.json'
+import textWeightTokens from './src/design-tokens/text-weights.json'
+import viewportTokens from './src/design-tokens/viewports.json'
 
 // Process design tokens
 const colors = tokensToTailwind(colorTokens.items)
@@ -23,9 +22,6 @@ const fontWeight = tokensToTailwind(textWeightTokens.items)
 const fontSize = tokensToTailwind(clampGenerator(textSizeTokens.items))
 const lineHeight = tokensToTailwind(textLeadingTokens.items)
 const spacing = tokensToTailwind(clampGenerator(spacingTokens.items))
-
-// Custom utility to slugify text
-const nameSlug = (text: string): string => slugify(text, { lower: true })
 
 const tailwindConfig: Config = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -38,7 +34,10 @@ const tailwindConfig: Config = {
       xl: `${viewportTokens.xl}px`,
     },
     colors,
-    spacing,
+    spacing: () => ({
+      '0': '0',
+      ...spacing,
+    }),
     fontSize,
     lineHeight,
     fontFamily,
@@ -54,13 +53,8 @@ const tailwindConfig: Config = {
       main: 'main',
       medium: 'medium',
       small: 'small',
+      xsmall: 'xsmall',
       fullbleed: 'fullbleed',
-    },
-    extend: {
-      inset: {
-        0: '0',
-        auto: 'auto',
-      },
     },
   },
   variantOrder: [

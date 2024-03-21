@@ -1,0 +1,79 @@
+.root {
+  --_carousel-gutters: max(var(--site-space), calc(50vw - (var(--constrain-xsmall) / 2)));
+
+  display: grid;
+  grid-template-columns: var(--_carousel-gutters) 1fr var(--_carousel-gutters);
+}
+
+.controls {
+  display: contents;
+}
+
+.control {
+  cursor: pointer;
+  grid-row: 1;
+  background-color: hotpink;
+  color: #fff;
+  border-radius: 100vh;
+  align-self: center;
+  inline-size: 3rem;
+  aspect-ratio: 1;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+
+  &.previous {
+    grid-column: 1;
+    justify-self: end;
+  }
+
+  &.next {
+    grid-column: 3;
+  }
+}
+
+.scroller {
+  grid-row: 1;
+  grid-column: 1/-1;
+
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 2rem;
+
+  padding-block-end: 1rem;
+  overflow-x: auto;
+  isolation: isolate;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--_carousel-gutters);
+  padding-inline: var(--_carousel-gutters);
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+.snap {
+  scroll-snap-align: center;
+
+  /* demo */
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  background-color: honeydew;
+  color: black;
+
+  > * {
+    max-inline-size: var(--constrain-xsmall);
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}

@@ -1,14 +1,14 @@
 ---
 // React components
 import { FadeIn } from '@components/fade-in'
+// import CssFadeIn  from '@/components/CssFadeIn.astro'
 ---
 
-<div class="relative z-10 space-y-l">
-    <ul class="m-zero space-y-l p-zero text-4xl font-bold">
+<div class="region relative z-10 space-y-l">
+    <ul class="text relative m-zero space-y-l p-zero text-4xl font-bold">
         <li>
-            <FadeIn client:visible>
-                Elke maand nieuwe Apple Originals. Altijd zonder reclame.
-            </FadeIn>
+            <FadeIn client:visible>Elke maand nieuwe Apple Originals. Altijd zonder reclame.</FadeIn
+            >
         </li>
 
         <li>
@@ -24,9 +24,47 @@ import { FadeIn } from '@components/fade-in'
         </li>
 
         <li>
-            <FadeIn client:visible> Deel één abonnement met tot vijf anderen. </FadeIn>
+            <FadeIn client:visible>Deel één abonnement met tot vijf anderen. </FadeIn>
         </li>
     </ul>
 
-    <div class="3-cols">3 col layout</div>
+    <!-- <ul class="text relative m-zero space-y-l p-zero text-4xl font-bold">
+        <li>
+            <CssFadeIn> Elke maand nieuwe Apple Originals. Altijd zonder reclame. </CssFadeIn>
+        </li>
+
+        <li>
+            <CssFadeIn>
+                Stream ze in de Apple TV-app op Apple devices, smart‑tv’s of consoles.
+            </CssFadeIn>
+        </li>
+
+        <li>
+            <CssFadeIn>
+                Kijk in 4K HDR met ruimtelijke audio waar je helemaal in opgaat.
+            </CssFadeIn>
+        </li>
+
+        <li>
+            <CssFadeIn> Deel één abonnement met tot vijf anderen. </CssFadeIn>
+        </li>
+    </ul> -->
+
+    <div class="grids" data-layout="thirds">
+        <FadeIn client:visible>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+        </FadeIn>
+        <FadeIn client:visible>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+        </FadeIn>
+        <FadeIn client:visible>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, obcaecati.</p>
+        </FadeIn>
+    </div>
 </div>

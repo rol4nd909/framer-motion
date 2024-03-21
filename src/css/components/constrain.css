@@ -4,9 +4,11 @@
     [fullbleed-start] minmax(var(--site-space, 1rem), 1fr)
     [main-start] minmax(0, calc((var(--constrain-large) - var(--constrain-medium)) / 2))
     [medium-start] minmax(0, calc((var(--constrain-medium) - var(--constrain-small)) / 2))
-    [small-start]
-    min(100% - (var(--site-space, 1rem) * 2), var(--constrain-small))
-    [small-end]
+    [small-start] minmax(0, calc((var(--constrain-small) - var(--constrain-xsmall)) / 2))
+    [xsmall-start]
+    min(100% - (var(--site-space, 1rem) * 2), var(--constrain-xsmall))
+    [xsmall-end]
+    minmax(0, calc((var(--constrain-small) - var(--constrain-xsmall)) / 2)) [small-end]
     minmax(0, calc((var(--constrain-medium) - var(--constrain-small)) / 2)) [medium-end]
     minmax(0, calc((var(--constrain-large) - var(--constrain-medium)) / 2)) [main-end]
     minmax(var(--site-space, 1rem), 1fr) [fullbleed-end];

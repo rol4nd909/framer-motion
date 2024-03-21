@@ -1,7 +1,9 @@
 :root {
+  --site-space: 1rem;
   --constrain-large: 86.25rem;
   --constrain-medium: 75rem;
   --constrain-small: 61.25rem;
+  --constrain-xsmall: 56.25rem;
 
   --gutter: var(--space-s-l);
   --transition-base: 250ms ease;

@@ -1,9 +1,9 @@
-import slugify from 'slugify';
+import slugify from 'slugify'
 
 export type Token = {
-  name: string;
-  value: any;
-  lineHeight?: any;
+  name: string
+  value: number | string | string[]
+  lineHeight?: number
 }
 
 /**
@@ -13,19 +13,19 @@ export type Token = {
  * @return {object} {key, value}
  */
 const tokensToTailwind = (tokens: Token[]): { [key: string]: any } => {
-  const nameSlug = (text: string) => slugify(text, { lower: true });
-  let response: { [key: string]: any } = {};
+  const nameSlug = (text: string) => slugify(text, { lower: true })
+  let response: { [key: string]: any } = {}
 
   tokens.forEach(({ name, value, lineHeight }: Token) => {
     if (lineHeight === undefined) {
-      response[nameSlug(name)] = value;
+      response[nameSlug(name)] = value
     } else {
-      const values = `${value} , ${lineHeight}`;
-      response[nameSlug(name)] = values.split(' , ');
+      const values = `${value} , ${lineHeight}`
+      response[nameSlug(name)] = values.split(' , ')
     }
-  });
+  })
 
-  return response;
-};
+  return response
+}
 
-export default tokensToTailwind;
+export default tokensToTailwind

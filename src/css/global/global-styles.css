@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: var(--font-base);
   line-height: var(--leading-standard);
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  background-color: var(--color-light);
+  color: var(--color-dark);
   font-size: var(--size-base);
 }

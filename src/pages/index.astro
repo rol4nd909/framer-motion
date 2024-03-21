@@ -5,21 +5,32 @@ import Usps from '@/components/section/Usps.astro'
 
 // React components
 import { Hero } from '@/components/section/hero'
+import { Carousel } from '@/components/section/carousel/carousel'
 ---
 
 <Layout title="Apple TV rebuild with Framer Motion">
     <Header />
     <main class="constrain col-fullbleed">
-        <Hero client:visible />
+        <div class="constrain relative z-10 col-fullbleed bg-dark text-light">
+            <Hero client:visible />
 
-        <Usps />
+            <Usps />
+        </div>
 
-        <div class="carousel col-fullbleed">Big Carousel</div>
-        <div class="carousel col-fullbleed">Small Carousel 2</div>
-        <div class="carousel col-fullbleed">Small Carousel 3</div>
+        <Carousel client:visible />
 
-        <div class="constrain col-fullbleed h-[200vh] bg-light text-dark">
+        <div class="constrain region col-fullbleed h-[200vh]">
             <h3>new sections</h3>
+
+            <div class="col-fullbleed">fullbleed</div>
+
+            <div class="col-main">main</div>
+
+            <div>medium default</div>
+
+            <div class="col-small">small</div>
+
+            <div class="col-xsmall">xsmall</div>
         </div>
     </main>
 </Layout>
